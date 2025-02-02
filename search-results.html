@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>نتائج البحث</title>
+</head>
+<body>
+    <header>
+        <img src="images/logo2.png" alt="Logo" class="logo">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html" class="cart-icon">
+                <img src="images/shopping-cart.png" alt="Cart Icon" width="20">
+                <span class="cart-count">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <section class="search-results">
+        <h2>نتائج البحث</h2>
+        <div class="products-grid" id="searchResults">
+            <!-- سيتم ملء هذا القسم بنتائج البحث -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p> &copy; 2025 A2Z. جميع الحقوق محفوظة</p>
+            <div class="social-icons">
+                <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const searchResults = JSON.parse(localStorage.getItem('searchResults'));
+        const resultsContainer = document.getElementById('searchResults');
+
+        if (searchResults && searchResults.length > 0) {
+            searchResults.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>${product.price}</p>
+                    <a href="${product.link}" class="cta-button">عرض المنتج</a>
+                `;
+                resultsContainer.appendChild(productCard);
+            });
+        } else {
+            resultsContainer.innerHTML = '<p>لم يتم العثور على نتائج.</p>';
+        }
+    </script>
+</body>
+</html>

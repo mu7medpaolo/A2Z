@@ -232,10 +232,15 @@ hr {
 }
 
 footer {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    text-align: center;
+    footer {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        position: fixed; /* لتثبيت الفوتر */
+        bottom: 0; /* لتثبيته في الأسفل */
+        width: 100%; /* لجعله يأخذ العرض الكامل */
+    }
 }
 
 .footer-content {
@@ -249,4 +254,89 @@ footer {
 .social-icons img {
     width: 24px;
     margin: 0 10px;
+}
+
+
+.search-results {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.search-results h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.products-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-card p {
+    font-size: 16px;
+    color: #333;
+}
+
+.cta-button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ff1a1a;
+}
+
+
+
+/* إضافة هذه التنسيقات إلى ملف styles.css */
+
+html, body {
+    height: 100%; /* لجعل الصفحة تأخذ 100% من ارتفاع الشاشة */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* لجعل المحتوى يتدفق عموديًا */
+}
+
+body {
+    flex: 1; /* لجعل الجسم يأخذ المساحة المتبقية */
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* لجعل المحتوى الرئيسي يأخذ المساحة المتبقية */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto; /* لتثبيت الفوتر في الأسفل */
 }
