@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="a2z" content="a2z international">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>A2Z</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <img src="images/logo2.png" alt="Logo" class="logo">
+      
+        <button class="search-toggle-btn" onclick="toggleSearch()">
+            <img src="images/icons-search.png" alt="Search Icon">
+        </button>
+
+        <div class="search-bar" id="searchBar">
+            <input type="text" placeholder="Search..." id="searchInput">
+            <button onclick="performSearch()">
+                <img src="images/icons-search.png" alt="Search Icon" width="20">
+            </button>
+            <button onclick="toggleSearch()" class="close-btn">X</button>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html" class="cart-icon">
+                <img src="images/shopping-cart.png" alt="Cart Icon" width="20">
+                <span class="cart-count">0</span>
+            </a>
+        </nav>
+    </header>
+     <!-- Hero Section -->
+     <section class="hero">
+        <div class="hero-content">
+            <h1>افضل ماكينات القهوة لدينا</h1>
+            <p>استمتع بقهوة مثالية مع أحدث الماكينات من أفضل العلامات التجارية.</p>
+            <a href="products.html" class="cta-button">تصفح المنتجات</a>
+        </div>
+    </section>
+
+    <section class="featured-products">
+        <h2>المنتجات المميزة</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="images/product1.jpg" alt="Product 1">
+                <h3>ماكينة إسبريسو ديلونجي</h3>
+                <p>999 جنيه</p>
+                <button class="add-to-cart">اضف إلى السلة</button>
+            </div>
+            <div class="product-card">
+                <img src="images/product2.jpg" alt="Product 2">
+                <h3>ماكينة كبسولات نيسبرسو</h3>
+                <p>799 جنيه</p>
+                <button class="add-to-cart">اضف إلى السلة</button>
+            </div>
+            <!-- يمكنك إضافة المزيد من المنتجات -->
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+           <p> &copy; 2025 A2Z.جميع الحقوق محفوظه لدي </p>
+            <div class="social-icons">
+                <a href="#"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="images/twitter-icon.png" alt="Twitter"></a>
+                <a href="#"><img src="images/instagram-icon.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </footer>
+   
+</body>
+</html>
