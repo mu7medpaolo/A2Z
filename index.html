@@ -1,76 +1,316 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta name="a2z" content="a2z international">
     <meta name="description" content="اكتشف أفضل ماكينات القهوة من A2Z. استمتع بقهوة مثالية مع أحدث الماكينات من أفضل العلامات التجارية.">
-<meta name="keywords" content="ماكينات قهوة, قهوة, إسبريسو, نيسبرسو, ديلونجي">
-<meta name="author" content="A2Z Coffee Machines">
+    <meta name="keywords" content="ماكينات قهوة, قهوة, إسبريسو, نيسبرسو, ديلونجي">
+    <meta name="author" content="A2Z Coffee Machines">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>A2Z</title>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>A2Z | أفضل ماكينات القهوة</title>
 </head>
 <body>
+    <!-- شريط التحميل -->
+    <div class="loading-bar" id="loadingBar"></div>
+
+    <!-- زر العودة للأعلى -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <header>
-        <img src="images/logo2.png" alt="Logo" class="logo">
-      
-        <button class="search-toggle-btn" onclick="toggleSearch()">
-            <img src="images/icons-search.png" alt="Search Icon">
-        </button>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="images/logo2.png" alt="A2Z Logo" class="logo">
+            </div>
 
-        <div class="search-bar" id="searchBar">
-            <input type="text" placeholder="Search..." id="searchInput">
-            <button onclick="performSearch()">
-                <img src="images/icons-search.png" alt="Search Icon" width="20">
+            <!-- زر القائمة للموبايل -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
             </button>
-            <button onclick="toggleSearch()" class="close-btn">X</button>
+
+            <div class="search-container">
+                <button class="search-toggle-btn" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+
+                <div class="search-bar" id="searchBar">
+                    <input type="text" placeholder="ابحث عن منتج..." id="searchInput">
+                    <button class="search-submit" onclick="performSearch()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button onclick="toggleSearch()" class="close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="search-suggestions" id="searchSuggestions"></div>
+                </div>
+            </div>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> الرئيسية</a>
+                <a href="products.html" class="nav-link"><i class="fas fa-coffee"></i> المنتجات</a>
+                <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> عنا</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> اتصل بنا</a>
+                <a href="cart.html" class="nav-link cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </nav>
         </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="contact.html">Contact</a>
-            <a href="cart.html" class="cart-icon">
-                <img src="images/shopping-cart.png" alt="Cart Icon" width="20">
-                <span class="cart-count">0</span>
-                <button class="add-to-cart" onclick="addToCart()">اضف إلى السلة</button>
-            </a>
-        </nav>
     </header>
-     <!-- Hero Section -->
-     <section class="hero">
-        <div class="hero-content">
-            <h1>افضل ماكينات القهوة لدينا</h1>
-            <p>استمتع بقهوة مثالية مع أحدث الماكينات من أفضل العلامات التجارية.</p>
-            <a href="products.html" class="cta-button">تصفح المنتجات</a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <div class="hero-content">
+                    <h1 data-aos="fade-left">افضل ماكينات القهوة لدينا</h1>
+                    <p data-aos="fade-left" data-aos-delay="200">استمتع بقهوة مثالية مع أحدث الماكينات من أفضل العلامات التجارية.</p>
+                    <div data-aos="fade-left" data-aos-delay="400">
+                        <a href="products.html" class="cta-button">تصفح المنتجات <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image" data-aos="fade-left" data-aos-delay="600">
+                    <img src="images/coffee-machine-hero.jpg" alt="ماكينة قهوة">
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
-    <section class="featured-products">
-        <h2>المنتجات المميزة</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <img src="images/product1.jpg" alt="Product 1">
-                <h3>ماكينة إسبريسو ديلونجي</h3>
-                <p>999 جنيه</p>
-                <button class="add-to-cart">اضف إلى السلة</button>
+    <!-- فئة المنتجات -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">فئات المنتجات</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3>ماكينات إسبريسو</h3>
+                    <p>أفضل ماكينات الإسبريسو الاحترافية</p>
+                </div>
+                <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-icon">
+                        <i class="fas fa-capsules"></i>
+                    </div>
+                    <h3>ماكينات كبسولات</h3>
+                    <p>ماكينات كبسولات سريعة وسهلة</p>
+                </div>
+                <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="category-icon">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <h3>ماكينات تقليدية</h3>
+                    <p>ماكينات القهوة التركية والعربية</p>
+                </div>
+                <div class="category-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="category-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>إكسسوارات</h3>
+                    <p>كل ما تحتاجه لعالم القهوة</p>
+                </div>
             </div>
-            <div class="product-card">
-                <img src="images/product2.jpg" alt="Product 2">
-                <h3>ماكينة كبسولات نيسبرسو</h3>
-                <p>799 جنيه</p>
-                <button class="add-to-cart">اضف إلى السلة</button>
-            </div>
-            <!--  إضافة المزيد من المنتجات -->
         </div>
     </section>
+
+    <!-- المنتجات المميزة -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">المنتجات المميزة</h2>
+            <div class="products-grid">
+                <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-image">
+                        <img src="images/product1.jpg" alt="ماكينة إسبريسو ديلونجي">
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product-id="1"><i class="fas fa-eye"></i></button>
+                            <button class="add-to-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>ماكينة إسبريسو ديلونجي</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(24)</span>
+                        </div>
+                        <p class="product-price">999 جنيه</p>
+                        <button class="add-to-cart" onclick="addToCart(1, 'ماكينة إسبريسو ديلونجي', 999, 'images/product1.jpg')">
+                            <i class="fas fa-shopping-cart"></i> اضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-image">
+                        <img src="images/product2.jpg" alt="ماكينة كبسولات نيسبرسو">
+                        <div class="product-overlay">
+                            <button class="quick-view" data-product-id="2"><i class="fas fa-eye"></i></button>
+                            <button class="add-to-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>ماكينة كبسولات نيسبرسو</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(18)</span>
+                        </div>
+                        <p class="product-price">799 جنيه</p>
+                        <button class="add-to-cart" onclick="addToCart(2, 'ماكينة كبسولات نيسبرسو', 799, 'images/product2.jpg')">
+                            <i class="fas fa-shopping-cart"></i> اضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- يمكن إضافة المزيد من المنتجات هنا -->
+            </div>
+            
+            <div class="view-all-container" data-aos="fade-up">
+                <a href="products.html" class="view-all-btn">عرض جميع المنتجات <i class="fas fa-arrow-left"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخصائص -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item" data-aos="fade-up">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>شحن سريع</h3>
+                    <p>شحن سريع وآلالي مجاني للطلبات فوق 1000 جنيه</p>
+                </div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>ضمان لمدة عام</h3>
+                    <p>ضمان شامل على جميع المنتجات لمدة عام كامل</p>
+                </div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-headset"></i>
+                    <h3>دعم فني 24/7</h3>
+                    <p>فريق دعم فني متاح على مدار الساعة لمساعدتك</p>
+                </div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-undo"></i>
+                    <h3>إرجاع سهل</h3>
+                    <p>إمكانية إرجاع المنتج خلال 14 يوم من الشراء</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- النشرة البريدية -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content" data-aos="fade-up">
+                <h2>اشترك في نشرتنا البريدية</h2>
+                <p>كن أول من يعرف عن العروض والمنتجات الجديدة</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="بريدك الإلكتروني" required>
+                    <button type="submit">اشترك الآن</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <div class="footer-content">
-           <p> &copy; 2025 A2Z.جميع الحقوق محفوظه لدي </p>
-            <div class="social-icons">
-                <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-                <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/logo2.png" alt="A2Z Logo" class="footer-logo">
+                    <p>متخصصون في توفير أفضل ماكينات القهوة والإكسسوارات ذات الجودة العالية لجميع عشاق القهوة.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">المنتجات</a></li>
+                        <li><a href="about.html">عن الشركة</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>وسائل الدفع</h3>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                    <h3>التواصل</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</p>
+                    <p><i class="fas fa-phone"></i> +20 123 456 7890</p>
+                    <p><i class="fas fa-envelope"></i> info@a2z-coffee.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p> &copy; 2025 A2Z. جميع الحقوق محفوظة</p>
             </div>
         </div>
     </footer>
+
+    <!-- نموذج معاينة سريعة للمنتج -->
+    <div class="quick-view-modal" id="quickViewModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <!-- سيتم ملء المحتوى عبر JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- إشعار إضافة إلى السلة -->
+    <div class="cart-notification" id="cartNotification">
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <span>تمت إضافة المنتج إلى سلة التسوق</span>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // تهيئة animations
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+            
+            // إظهار شريط التحميل
+            const loadingBar = document.getElementById('loadingBar');
+            if (loadingBar) {
+                setTimeout(() => {
+                    loadingBar.style.width = '100%';
+                    setTimeout(() => {
+                        loadingBar.style.opacity = '0';
+                    }, 500);
+                }, 300);
+            }
+        });
+    </script>
 </body>
 </html>
